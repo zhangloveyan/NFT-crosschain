@@ -10,16 +10,27 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
 contract MyToken is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Burnable, Ownable {
     uint256 private _nextTokenId;
+    // metadata 正常是 文件夹 先临时这么干
+    mapping (uint256 => string) public tokenUrlMap;
 
     constructor(address initialOwner)
         ERC721("MyToken", "MTK")
         Ownable(initialOwner)
-    {}
+    {
+        tokenUrlMap[0] = "ipfs://QmfBB5JTLrAE8JZkvsCJzGJfuHzqUoejhDhb4HYC8B7cR9";
+        tokenUrlMap[1] = "ipfs://QmYcNZtM4WbJ4ScvFaAwR4bauJFAWmhwd4K7Ri3R3q3DKX";
+        tokenUrlMap[2] = "ipfs://QmR3VhGp2BvZ4Y2PaLmhhUvKm6oU51H2eLmyLi4mbEuBbu";
+        tokenUrlMap[3] = "ipfs://QmemJbbodJt1LWUpAVGFSfFq8giNP2aPubTYWTUTbhMd3F";
+        tokenUrlMap[4] = "ipfs://Qmbrp8h4fEeD1guEkwf2bdrs69RV1CnmmGnRHSnhkEHL89";
+        tokenUrlMap[5] = "ipfs://QmaHusnzksrgKY8MpbJGbbVt2VVtQAwCiSsQHSsS395fMP";
+    }
 
-    function safeMint(address to, string memory uri) public onlyOwner {
+    function safeMint(address to) public onlyOwner {
+        // tokenId = ++ 之前的值  然后在 _nextTokenId++
         uint256 tokenId = _nextTokenId++;
         _safeMint(to, tokenId);
-        _setTokenURI(tokenId, uri);
+        _setTokenURI(tokenId, tokenUrlMap[tokenId]);
+
     }
 
     // The following functions are overrides required by Solidity.
