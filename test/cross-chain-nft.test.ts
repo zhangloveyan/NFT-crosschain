@@ -1,7 +1,7 @@
-import { expect } from 'chai';
-import { deployments, ethers, getNamedAccounts } from 'hardhat';
-import { CCIPLocalSimulator } from './../typechain-types/@chainlink/local/src/ccip/CCIPLocalSimulator';
-import { MyToken, NFTPoolBurnAndMint, NFTPoolLockAndRelease, WrappedMyToken } from './../typechain-types/contracts';
+import { expect } from "chai";
+import { deployments, ethers, getNamedAccounts } from "hardhat";
+import { CCIPLocalSimulator } from "./../typechain-types/@chainlink/local/src/ccip/CCIPLocalSimulator";
+import { MyToken, NFTPoolBurnAndMint, NFTPoolLockAndRelease, WrappedMyToken } from "./../typechain-types/contracts";
 
 // 1.测试 用户可以成功 mint nft
 
