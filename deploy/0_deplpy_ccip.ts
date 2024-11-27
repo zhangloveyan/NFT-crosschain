@@ -1,18 +1,23 @@
-import { deployments, getNamedAccounts } from "hardhat";
+import { deployments, getNamedAccounts, network } from "hardhat";
+import { developementChains } from "../helper-hardhat-config";
+import { DeployFunction } from "hardhat-deploy/dist/types";
 
-module.exports = async () => {
-    const { firstAccount } = await getNamedAccounts();
-    const { deploy, log } = deployments;
+const deployCCIP: DeployFunction = async () => {
+    if (developementChains.includes(network.name)) {
 
-    log("Chainlink-ccip 部署合约中。。。")
+        const { firstAccount } = await getNamedAccounts();
+        const { deploy, log } = deployments;
 
-    await deploy("CCIPLocalSimulator", {
-        contract: "CCIPLocalSimulator",
-        from: firstAccount,
-        log: true
-    });
-    
-    log("Chainlink-ccip 部署完成");
+        log("Chainlink-ccip 部署合约中。。。")
+        await deploy("CCIPLocalSimulator", {
+            contract: "CCIPLocalSimulator",
+            from: firstAccount,
+            log: true
+        });
+
+        log("Chainlink-ccip 部署完成");
+    }
 }
+export default deployCCIP;
 
-module.exports.tags = ["test", "all"]
+deployCCIP.tags = ["test", "all"]

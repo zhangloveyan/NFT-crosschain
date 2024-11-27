@@ -1,6 +1,7 @@
 import { deployments, getNamedAccounts } from "hardhat";
+import { DeployFunction } from "hardhat-deploy/dist/types";
 
-module.exports = async () => {
+const deployWrappedMyToken: DeployFunction = async () => {
     const { firstAccount } = await getNamedAccounts();
     const { deploy, log } = deployments;
 
@@ -15,5 +16,5 @@ module.exports = async () => {
 
     log("WrappedMyToken 部署完成");
 }
-
-module.exports.tags = ["destchain", "all"]
+export default deployWrappedMyToken;
+deployWrappedMyToken.tags = ["destchain", "all"]

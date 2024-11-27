@@ -1,6 +1,7 @@
 import { deployments, getNamedAccounts } from "hardhat";
+import { DeployFunction } from "hardhat-deploy/dist/types";
 
-module.exports = async () => {
+const deployMyToken: DeployFunction  = async () => {
     const { firstAccount } = await getNamedAccounts();
     const { deploy, log } = deployments;
 
@@ -15,5 +16,5 @@ module.exports = async () => {
 
     log("MyToken 部署完成");
 }
-
-module.exports.tags = ["sourcechain", "all"]
+export default deployMyToken;
+deployMyToken.tags = ["sourcechain", "all"]

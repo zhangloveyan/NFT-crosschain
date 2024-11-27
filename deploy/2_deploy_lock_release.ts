@@ -1,6 +1,7 @@
 import { deployments, ethers, getNamedAccounts } from "hardhat";
+import { DeployFunction } from "hardhat-deploy/dist/types";
 
-module.exports = async () => {
+const deployNFTPoolLockAndRelease: DeployFunction = async () => {
     const { firstAccount } = await getNamedAccounts();
     const { deploy, log } = deployments;
 
@@ -27,4 +28,5 @@ module.exports = async () => {
     log("NFTPoolLockAndRelease 部署完成");
 }
 
-module.exports.tags = ["sourcechain", "all"]
+export default deployNFTPoolLockAndRelease;
+deployNFTPoolLockAndRelease.tags = ["sourcechain", "all"]

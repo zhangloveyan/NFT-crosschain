@@ -1,6 +1,6 @@
 import { deployments, ethers, getNamedAccounts } from "hardhat";
-
-module.exports = async () => {
+import { DeployFunction } from "hardhat-deploy/dist/types";
+const deployNFTPoolBurnAndMint: DeployFunction = async () => {
     const { firstAccount } = await getNamedAccounts();
     const { deploy, log } = deployments;
 
@@ -25,5 +25,5 @@ module.exports = async () => {
 
     log("NFTPoolBurnAndMint 部署完成");
 }
-
-module.exports.tags = ["destchain", "all"]
+export default deployNFTPoolBurnAndMint;
+deployNFTPoolBurnAndMint.tags = ["destchain", "all"]
