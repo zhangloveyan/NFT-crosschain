@@ -3,7 +3,7 @@ import "@nomicfoundation/hardhat-toolbox";
 import * as dotenv from "dotenv";
 import "hardhat-deploy";
 import "hardhat-deploy-ethers";
-import "./task/check-nft"
+import "./task"
 import { HardhatUserConfig } from "hardhat/config";
 dotenv.config();
 
