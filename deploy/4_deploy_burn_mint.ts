@@ -7,6 +7,7 @@ const deployNFTPoolBurnAndMint: DeployFunction = async () => {
     const { deploy, log } = deployments;
 
     log("NFTPoolBurnAndMint 部署合约中。。。")
+    // amoy 0xb9bC33C6868D59D18933341DDD3E278A753BCc49
 
     let destRouter: string;
     let link: string;

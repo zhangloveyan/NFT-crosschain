@@ -6,6 +6,7 @@ const deployWrappedMyToken: DeployFunction = async () => {
     const { deploy, log } = deployments;
 
     log("WrappedMyToken 部署合约中。。。")
+    // amoy 0xAF0C0fc5b63513BEEABe488CD2D26143b695a899
 
     await deploy("WrappedMyToken", {
         contract: "WrappedMyToken",

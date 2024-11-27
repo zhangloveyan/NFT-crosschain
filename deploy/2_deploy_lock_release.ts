@@ -7,6 +7,7 @@ const deployNFTPoolLockAndRelease: DeployFunction = async () => {
     const { deploy, log } = deployments;
 
     log("NFTPoolLockAndRelease 部署合约中。。。")
+    // sepolia 0x22A438563e783Ef65b066A4A3Aa61Ea3CE4a6AF6
 
     let sourceRouter: string;
     let link: string;

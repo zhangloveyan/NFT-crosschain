@@ -6,6 +6,7 @@ const deployMyToken: DeployFunction  = async () => {
     const { deploy, log } = deployments;
 
     log("MyToken 部署合约中。。。")
+    // sepolia 0xA41Aab61481631Ba5Cc2DD377eC6F624D4ceE409
 
     await deploy("MyToken", {
         contract: "MyToken",
