@@ -3,8 +3,8 @@ import "@nomicfoundation/hardhat-toolbox";
 import * as dotenv from "dotenv";
 import "hardhat-deploy";
 import "hardhat-deploy-ethers";
-import "./task"
 import { HardhatUserConfig } from "hardhat/config";
+import "./task";
 dotenv.config();
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY as string;
@@ -25,15 +25,20 @@ const config: HardhatUserConfig = {
     sepolia: {
       url: SPEOLIA_URL,
       accounts: [PRIVATE_KEY],
-      chainId: 11155111
+      chainId: 11155111,
+      companionNetworks: {
+        destChain: "amoy"
+      }
     },
     amoy: {
       url: AMOY_URL,
       accounts: [PRIVATE_KEY],
-      chainId: 80002
+      chainId: 80002,
+      companionNetworks: {
+        destChain: "sepolia"
+      }
     }
   }
-
 };
 
 export default config;
