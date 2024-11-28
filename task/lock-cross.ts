@@ -13,7 +13,7 @@ export default task("lock-cross").setDescription("原链锁定 nft 发消息")
     .addOptionalParam("receiver", "receiver address on dest chain")
     .addParam("tokenid", "token id to be crossed chain")
     .setAction(async (taskArgs, hre: HardhatRuntimeEnvironment) => {
-        const { ethers, getNamedAccounts, network, deployments } = hre;
+        const { ethers, getNamedAccounts, network } = hre;
         const { firstAccount } = await getNamedAccounts();
         const chainId = network.config.chainId as number;
 
@@ -45,7 +45,7 @@ export default task("lock-cross").setDescription("原链锁定 nft 发消息")
         const linkContract = await ethers.getContractAt("LinkToken", linkAddress);
         const lockRelease: NFTPoolLockAndRelease = await ethers.getContract("NFTPoolLockAndRelease", firstAccount);
         // 转 fee
-        const transTx = await linkContract.transfer(lockRelease.target, ethers.parseEther("10"));
+        const transTx = await linkContract.transfer(lockRelease.target, ethers.parseEther("1"));
         await transTx.wait(6);
         // 查询余额
         const balance = await linkContract.balanceOf(lockRelease.target);
@@ -61,5 +61,6 @@ export default task("lock-cross").setDescription("原链锁定 nft 发消息")
         const lockReleaseTx = await lockRelease.lockAndSendNFT(tokenId, firstAccount, chainSelector, receiver);
 
         console.log(`ccip tx is sent,tx hash is ${lockReleaseTx.hash}`);
+        // 0x0da8ea5d0c5c79093088022cfadc63052865afb7008c66be71dd28906df1b046
         console.log("lock 完成");
     })

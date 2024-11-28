@@ -3,7 +3,8 @@ import { taskCheck } from "./check-nft";
 import { taskCheckWnft } from "./check-wnft";
 
 // 默认导入
+import burnCross from "./burn-cross";
 import lockCross from "./lock-cross";
 import taskMint from "./mint-nft";
-export { lockCross, taskCheck, taskCheckWnft, taskMint };
+export { burnCross, lockCross, taskCheck, taskCheckWnft, taskMint };
 
